@@ -92,8 +92,8 @@ public class ServerResource {
         );
     }
 
-    @GetMapping(path = "/images/{filename}", produces = MediaType.IMAGE_PNG_VALUE)
-    public byte[] getServerImage(@PathVariable("filename") String filename) throws IOException {
-        return Files.readAllBytes(Paths.get("./images"  + filename));
+    @GetMapping(path = "/images/{fileName}", produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] getServerImage(@PathVariable("fileName") String fileName) throws IOException {
+        return Files.readAllBytes(Paths.get(System.getProperty("user.dir")  + "/src/main/java/com/crud/server/images/" + fileName));
     }
 }
