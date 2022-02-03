@@ -9,7 +9,7 @@ import { Status } from '../enum/status.enum';
 @Injectable({  providedIn: 'root' })
 export class ServerService {
 
-  private readonly apiUrl = 'any';
+  private readonly apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
@@ -66,7 +66,7 @@ export class ServerService {
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error);
-    return throwError('An error occurred - Error code: ${error.status}');
+    return throwError(() => 'An error occurred - Error code: ${error.status}');
   }
 
 }
