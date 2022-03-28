@@ -55,7 +55,7 @@
               <td>{{ server.memory }}</td>
               <td>{{ server.type }}</td>
               <td>
-                <span class="bagde" [ngClass]="[server.status === Status.SERVER_UP ? 'bagde-success' : 'badge-danger']">
+                <span class="badge" [ngClass]="[server.status === Status.SERVER_UP ? ' badge-success ' : ' badge-danger ']">
                   {{ server.status === Status.SERVER_UP ? 'SERVER UP' : 'SERVER DOWN' }}
                 </span>
               </td>
