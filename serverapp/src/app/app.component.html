@@ -10,9 +10,8 @@
           </div>
           <div class="col-sm-6">
             <button (click)="printReport()" type="button" class="btn btn-primary">Print Server Report</button>
-          </div>
 
-          <a href="#addServerModal" class="btn btn-sucess" data-toggle="modal">
+          <a href="#addServerModal" class="btn btn-success" data-toggle="modal">
             <i class="material-icons">&#xE147;</i>
             <span>New Server</span>
           </a>
@@ -24,6 +23,7 @@
               <option value="SERVER_DOWN">SERVER DOWN</option>
             </select>
           </span>
+        </div>
         </div>
       </div>
     </div> <br>
@@ -83,7 +83,7 @@
 </div>
 
 <!-- Server Modal HMTL-->
-<div id="addEmployeeModal" class="modal fade">
+<div id="addServerModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <form #serverForm="ngForm" (ngSubmit)="saveServer(serverForm)">
@@ -126,7 +126,7 @@
           <button type="button" class="btn btn-warning" id="closeModal" data-dismiss="modal">
             Cancel
           </button>
-          <button type="submit" [disabled]="serverForm.invalid || (isLoading$ | async)" class="btn btn-sucess">
+          <button type="submit" [disabled]="serverForm.invalid || (isLoading$ | async)" class="btn btn-success">
             <i *ngIf="isLoading$ | async" class="fas fa-spinner fa-spin"></i>
             <span *ngIf="isLoading$ | async">Saving...</span>
             <span *ngIf="!(isLoading$ | async)">Add</span>
