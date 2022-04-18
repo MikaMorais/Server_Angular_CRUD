@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static java.time.LocalDateTime.now;
 import static org.springframework.http.HttpStatus.CREATED;
@@ -27,7 +28,8 @@ public class ServerResource {
     private final ServerServiceImpl serverService;
 
     @GetMapping("/list")
-    public ResponseEntity<Response> getServers() {
+    public ResponseEntity<Response> getServers() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         return ResponseEntity.ok(
                 Response.builder()
                     .timeStamp(now())
@@ -92,8 +94,8 @@ public class ServerResource {
         );
     }
 
-    @GetMapping(path = "/images/{filename}", produces = MediaType.IMAGE_PNG_VALUE)
-    public byte[] getServerImage(@PathVariable("filename") String filename) throws IOException {
-        return Files.readAllBytes(Paths.get("./images"  + filename));
+    @GetMapping(path = "/images/{fileName}", produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] getServerImage(@PathVariable("fileName") String fileName) throws IOException {
+        return Files.readAllBytes(Paths.get(System.getProperty("user.dir")  + "/src/main/java/com/crud/server/images/" + fileName));
     }
 }
